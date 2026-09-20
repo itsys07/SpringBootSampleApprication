@@ -62,15 +62,30 @@
 			<artifactId>webjars-locator</artifactId>
 			<version>0.52</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-validation</artifactId>
-		</dependency>
-		<!--Tymeleaf-layout-dialect-->
-		<dependency>
+        <!-- validator -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <!-- thymeleaf-layout-dialect -->
+        <dependency>
             <groupId>nz.net.ultraq.thymeleaf</groupId>
             <artifactId>thymeleaf-layout-dialect</artifactId>
-		</dependency>
+        </dependency>
+    <!-- MyBatis Spring Boot Starter for Spring Boot 4.0.x -->
+    <dependency>
+        <groupId>org.mybatis.spring.boot</groupId>
+        <artifactId>mybatis-spring-boot-starter</artifactId>
+        <version>4.0.0</version>
+    </dependency>
+
+    <!-- ModelMapper Spring Integration -->
+    <dependency>
+        <groupId>org.modelmapper.extensions</groupId>
+        <artifactId>modelmapper-spring</artifactId>
+        <version>3.2.4</version>
+    </dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>

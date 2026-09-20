@@ -16,6 +16,17 @@ spring:
   h2:
     console:
       enabled: true
-  # Messagesプロパティ
+  # Messageプロパティ
   messages:
-    basename: messages,ValidationMessages		
+    basename: messages,ValidationMessages
+# MyBatis
+mybatis:
+  mapper-locations: classpath*:/mapper/h2/*.xml
+  type-aliases-package: com.example.demo.*
+  configuration:
+    map-underscore-to-camel-case: true
+
+# Log Level
+logging:
+  level:
+    '[com.example.demo]': debug
