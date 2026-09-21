@@ -14,13 +14,13 @@ import org.springframework.beans.BeanWrapperImpl;
 
 public class BirthdayAgeValidator implements ConstraintValidator<BirthdayAge,Object>{
 	
-	//誕生日
+	/** 誕生日 */
 	private String birthdayFieldName;
 	
-	//年齢
+	/** 年齢 */
 	private String ageFieldName;
 	
-	//メッセージ
+	/** メッセージ */
 	private String message;
 	
 	
@@ -39,13 +39,13 @@ public class BirthdayAgeValidator implements ConstraintValidator<BirthdayAge,Obj
 		Date birthday =(Date)beanWrapper.getPropertyValue(this.birthdayFieldName);
 		Integer age = (Integer)beanWrapper.getPropertyValue(this.ageFieldName);
 		
-		//String errorMessage = "誕生日と年齢が合っていません。入力値=" + age +"歳";
+		
 		//空の場合は＠NotNullなどでチェック
 		if (birthday == null || age == null) {
 			return true;
 		}
 		
-		//誕生日から年齢を算出
+		/** 誕生日から年齢を算出 */
 		int calculateAge = calculateAge(birthday);
 		
 		//算出した年齢と入力した年齢が一致しているかチェック
@@ -59,7 +59,7 @@ public class BirthdayAgeValidator implements ConstraintValidator<BirthdayAge,Obj
 		}
 		return true;
 	}
-	//誕生日から年齢を算出するメソッド
+	/** 誕生日から年齢を算出するメソッド */
 	private int calculateAge(Date birthday) {
 		//現在日付を取得
 		LocalDate today = LocalDate.now();
@@ -74,7 +74,7 @@ public class BirthdayAgeValidator implements ConstraintValidator<BirthdayAge,Obj
 		return period.getYears();
 						
 	}
-	//DateをLocalDateに変換するメソッド
+	/** DateをLocalDateに変換するメソッド */
 	private LocalDate convertToLocalDate(Date date) {
 		Instant instant = date.toInstant();
 		return instant.atZone(ZoneId.systemDefault()).toLocalDate();

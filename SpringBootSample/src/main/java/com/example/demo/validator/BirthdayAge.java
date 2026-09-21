@@ -13,19 +13,19 @@ import jakarta.validation.Payload;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface BirthdayAge {
-	//デフォルトメッセージ
+	/** デフォルトメッセージ */
 	String message()default"{birthday.age.message}";
 	
-	//グループ
+	/** グループ */
 	Class<?>[] groups() default{};
 	
-	//ペイロード
+	/** ペイロード */
 	Class<? extends Payload>[] payload() default{};
 	
-	//誕生日フィールド名
+	/** 誕生日フィールド名 */
 	String birthdayFieldName() default"";
 	
-	//年齢フィールド名
+	/** 年齢フィールド名 */
 	String ageFieldName() default"";
 	
 }
