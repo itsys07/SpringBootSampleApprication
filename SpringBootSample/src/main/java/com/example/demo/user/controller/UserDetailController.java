@@ -27,7 +27,7 @@ public class UserDetailController {
 		
 		//ユーザー1件取得
 		MUser user = userService.getUserOne(userId);
-		user.setPassword(null);
+		user.setPassword(null);//取得した行からパスワードを除外（セキュリティ）
 		//MUserをformに変換
 		form = modelMapper.map(user, UserDetailForm.class);
 		//Modelに登録
