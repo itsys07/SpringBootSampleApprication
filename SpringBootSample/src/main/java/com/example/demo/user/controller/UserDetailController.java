@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.user.domain.model.MUser;
@@ -12,13 +13,17 @@ import com.example.demo.user.domain.service.UserService;
 import com.example.demo.user.form.UserDetailForm;
 
 import lombok.RequiredArgsConstructor;
+
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/user")
 public class UserDetailController {
+
+
 	
 	private final UserService userService;
 	private final ModelMapper modelMapper;
+
 	
 	/** ユーザー詳細画面を表示 */
 	@GetMapping("/detail/{userId}")
@@ -34,6 +39,24 @@ public class UserDetailController {
 		model.addAttribute("userDetailForm", form);
 		//ユーザー詳細画面を表示
 		return "user/detail";
+	}
+	@PostMapping(value = "/detail",params = "update")
+	public String updateUser(UserDetailForm form, Model model) {
+		//ユーザー更新
+		userService.updateUserOne(form.getUserId(),
+				form.getPassword(),
+				form.getUserName());
+		//ユーザー一覧画面にリダイレクト
+		return "redirect:/user/list";
+	}
+	
+	/** ユーザー削除処理 */
+	@PostMapping(value = "/detail", params ="delete")
+	public String deleteUser(UserDetailForm form, Model model) {
+		//ユーザー削除
+		userService.deleteUserOne(form.getUserId());
+		//ユーザー一覧画面にリダイレクト
+		return "redirect:/user/list";
 	}
 
 }
